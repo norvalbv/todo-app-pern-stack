@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import check from "../images/icon-check.svg";
+import { useState } from "react";
 import "./listinput.scss";
 
 export default function ListItem({ onSubmit }) {
@@ -9,14 +8,22 @@ export default function ListItem({ onSubmit }) {
     setInput(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit({
-      id: Math.random(),
-      text: input,
-      complete: false,
-    });
-    setInput("");
+    try {
+      const body = { input };
+      const response = await fetch("http://localhost:5000/todos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      window.location = "/";
+
+      console.log(response);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
@@ -28,7 +35,6 @@ export default function ListItem({ onSubmit }) {
           value={input}
           onChange={handleChange}
           name="text"
-          // ref={inputRef}
           className="todo-input"
         />
       </form>

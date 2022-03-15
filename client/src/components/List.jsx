@@ -1,6 +1,6 @@
 import cross from "../images/icon-cross.svg";
 import "./list.scss";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import TodoFilter from "./todofilter";
 
 export default function List({

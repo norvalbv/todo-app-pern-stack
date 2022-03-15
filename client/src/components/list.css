@@ -21,8 +21,6 @@ body {
 
 .list-container {
   border-radius: 5px;
-  width: 27.25rem;
-  margin: 0 auto;
 }
 
 .list {
@@ -50,12 +48,10 @@ body {
   width: 10px;
   height: 10px;
   position: relative;
-  outline: none;
 }
 
 .list .checkbox:hover {
-  border: 1px solid linear-gradient(#57ddff, #c058f3);
-  outline: 1px solid linear-gradient(#57ddff, #c058f3);
+  border-color: #3a7bfd;
 }
 
 .list .remove {
@@ -112,13 +108,13 @@ body {
           flex: 1;
 }
 
-.bottom-nav .middle {
+.bottom-nav .todo-filter {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-.bottom-nav .middle .sorting {
+.bottom-nav .todo-filter .sorting {
   background: none;
   border: none;
   color: inherit;
@@ -138,17 +134,21 @@ body {
   border: none;
 }
 
-.clearAll {
+.clear-all {
   background: none;
   border: none;
   cursor: pointer;
-  color: inherit;
+  color: #4d5066;
 }
 
 .currentlyAll,
 .currentlyActive,
 .currentlyComplete {
   color: #3a7bfd !important;
+}
+
+.list-text {
+  cursor: pointer;
 }
 
 .dark .list-container {
@@ -162,19 +162,23 @@ body {
 }
 
 .dark .list-container .list .complete {
-  color: #777a92;
+  color: #4d5066;
 }
 
 .dark .bottom-nav {
   color: #4d5066;
 }
 
-.dark .bottom-nav .middle .sorting:hover {
-  color: #3a7bfd;
+.dark .bottom-nav .todo-filter .sorting:hover {
+  color: #e4e5f1;
 }
 
 .dark .bottom-nav .right .clear-list:hover {
-  color: #3a7bfd;
+  color: #e4e5f1;
+}
+
+.dark .bottom-nav .clear-all:hover {
+  color: #e4e5f1;
 }
 
 .light {
@@ -196,14 +200,43 @@ body {
 }
 
 .light .bottom-nav {
+  color: #9394a5;
+}
+
+.light .bottom-nav .todo-filter .sorting:hover {
   color: #484b6a;
 }
 
-.light .bottom-nav .middle .sorting:hover {
-  color: #3a7bfd;
+.light .bottom-nav .right .clear-list:hover {
+  color: #484b6a;
 }
 
-.light .bottom-nav .right .clear-list:hover {
-  color: #3a7bfd;
+@media only screen and (max-width: 600px) {
+  .list .remove {
+    opacity: 1;
+  }
+  .bottom-nav {
+    margin-top: 1rem;
+    position: relative;
+  }
+  .bottom-nav .todo-filter {
+    position: absolute;
+    width: 100%;
+    min-height: 2.5rem;
+    top: 7.5rem;
+    border-radius: 5px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .bottom-nav .todo-filter {
+    background-color: #25273c;
+  }
 }
 /*# sourceMappingURL=list.css.map */
