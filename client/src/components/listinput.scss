@@ -1,0 +1,49 @@
+@import "../app.scss";
+
+.todo-input-container {
+  margin-bottom: 1rem;
+
+  .todo-form {
+    color: inherit;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    .checkbox {
+      border: 1px solid $nd-dark-grayish-blue;
+      padding: 0.25rem;
+      border-radius: 10px;
+      height: 10px;
+      width: 10px;
+    }
+  }
+
+  .todo-input {
+    border: none;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    outline: none;
+    color: inherit;
+    width: 20rem;
+    caret-color: $p-bright-blue;
+  }
+}
+
+.dark {
+  .todo-form,
+  .todo-input {
+    background-color: $nd-very-dark-desaturated-blue;
+  }
+}
+
+.light {
+  .todo-form,
+  .todo-input {
+    background-color: $nl-very-light-gray;
+  }
+}

@@ -1,0 +1,82 @@
+@import "../app.scss";
+
+.app {
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.body {
+  width: 55%;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-flow: column nowrap;
+  text-align: center;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    h1 {
+      letter-spacing: 20px;
+      color: $nl-very-light-gray;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .todo-container {
+    margin: 2rem 0;
+  }
+
+  .reorder {
+    font-size: 12px;
+    justify-self: flex-end;
+  }
+}
+
+// Strictly Dark Theme
+
+.dark {
+  color: $nd-dark-grayish-blue;
+
+  .app {
+    background-image: url("../images/bg-desktop-dark.jpg");
+    background-color: $nd-very-dark-blue;
+  }
+}
+
+// Strictly Light Theme
+
+.light {
+  color: $nl-dark-grayish-blue;
+
+  .app {
+    background-image: url("../images/bg-desktop-light.jpg");
+    background-color: $nl-very-light-gray;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  .app {
+    background-size: 150vw;
+    overflow-x: hidden;
+  }
+
+  .body {
+    width: 75%;
+    padding: 2rem 2rem;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}

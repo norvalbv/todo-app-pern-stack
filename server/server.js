@@ -10,9 +10,9 @@ app.use(express.json());
 
 app.post("/todos", routes.createTodo);
 
-app.get("/", routes.getAllTodos);
+app.get("/todos", routes.getAllTodos);
 
-app.get("todos", routes.getTodo);
+app.get("/todos/:id", routes.getTodo);
 
 app.put("todos/:id", routes.updateTodo);
 

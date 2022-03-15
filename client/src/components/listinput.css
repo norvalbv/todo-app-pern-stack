@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+
+html,
+body {
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.todo-input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin-bottom: 1rem;
+}
+
+.todo-input-container .todo-form {
+  color: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
+.todo-input-container .todo-form:focus {
+  outline: none;
+}
+
+.todo-input-container .todo-form .checkbox {
+  border: 1px solid #777a92;
+  padding: 0.25rem;
+  border-radius: 10px;
+  height: 10px;
+  width: 10px;
+  content-visibility: hidden;
+}
+
+.todo-input-container .todo-input {
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 5px;
+  outline: none;
+  color: inherit;
+  width: 20rem;
+  caret-color: #3a7bfd;
+}
+
+.dark .todo-form,
+.dark .todo-input {
+  background-color: #25273c;
+}
+
+.light .todo-form,
+.light .todo-input {
+  background-color: #fafafa;
+}
+/*# sourceMappingURL=listinput.css.map */

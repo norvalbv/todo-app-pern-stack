@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+
+html,
+body {
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.list-container {
+  border-radius: 5px;
+  width: 27.25rem;
+  margin: 0 auto;
+}
+
+.list {
+  padding: 0.5rem 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2rem;
+  position: relative;
+}
+
+.list:hover .remove {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.list .checkbox {
+  border: 1px solid #777a92;
+  padding: 0.25rem;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  position: relative;
+  outline: none;
+}
+
+.list .checkbox:hover {
+  border: 1px solid linear-gradient(#57ddff, #c058f3);
+  outline: 1px solid linear-gradient(#57ddff, #c058f3);
+}
+
+.list .remove {
+  opacity: 0;
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  right: 1rem;
+}
+
+.list .complete {
+  text-decoration: line-through;
+}
+
+.list .checkbox-complete {
+  background: -webkit-gradient(linear, left top, left bottom, from(#57ddff), to(#c058f3));
+  background: linear-gradient(#57ddff, #c058f3);
+  position: relative;
+}
+
+.list .checkbox-complete::after {
+  content: "";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url("../images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
+
+.bottom-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
+}
+
+.bottom-nav .left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.bottom-nav .middle {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.bottom-nav .middle .sorting {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.bottom-nav .right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.bottom-nav .right .clear-list {
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.clearAll {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.currentlyAll,
+.currentlyActive,
+.currentlyComplete {
+  color: #3a7bfd !important;
+}
+
+.dark .list-container {
+  background-color: #25273c;
+  -webkit-box-shadow: 0 10px 10px #161722;
+          box-shadow: 0 10px 10px #161722;
+}
+
+.dark .list-container .list {
+  border-bottom: 1px solid #777a92;
+}
+
+.dark .list-container .list .complete {
+  color: #777a92;
+}
+
+.dark .bottom-nav {
+  color: #4d5066;
+}
+
+.dark .bottom-nav .middle .sorting:hover {
+  color: #3a7bfd;
+}
+
+.dark .bottom-nav .right .clear-list:hover {
+  color: #3a7bfd;
+}
+
+.light {
+  color: #484b6a;
+}
+
+.light .list-container {
+  background-color: #fafafa;
+  -webkit-box-shadow: 0 10px 10px #d2d3db;
+          box-shadow: 0 10px 10px #d2d3db;
+}
+
+.light .list-container .list {
+  border-bottom: 1px solid #9394a5;
+}
+
+.light .list-container .list .complete {
+  color: #d2d3db;
+}
+
+.light .bottom-nav {
+  color: #484b6a;
+}
+
+.light .bottom-nav .middle .sorting:hover {
+  color: #3a7bfd;
+}
+
+.light .bottom-nav .right .clear-list:hover {
+  color: #3a7bfd;
+}
+/*# sourceMappingURL=list.css.map */

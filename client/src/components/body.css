@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+
+html,
+body {
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.app {
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  min-height: 100vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.body {
+  width: 50%;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  text-align: center;
+}
+
+.body header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.body header h1 {
+  letter-spacing: 20px;
+  color: #fafafa;
+}
+
+.body header img {
+  cursor: pointer;
+}
+
+.body .todo-container {
+  margin: 2rem 0;
+}
+
+.body .reorder {
+  font-size: 12px;
+  justify-self: flex-end;
+}
+
+.dark {
+  color: #777a92;
+}
+
+.dark .app {
+  background-image: url("../images/bg-desktop-dark.jpg");
+  background-color: #161722;
+}
+
+.light {
+  color: #9394a5;
+}
+
+.light .app {
+  background-image: url("../images/bg-desktop-light.jpg");
+  background-color: #fafafa;
+}
+/*# sourceMappingURL=body.css.map */
