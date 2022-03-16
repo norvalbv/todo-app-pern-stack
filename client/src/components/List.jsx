@@ -1,91 +1,118 @@
+import { useState, useEffect } from "react";
 import cross from "../images/icon-cross.svg";
 import "./list.scss";
-// import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import TodoFilter from "./todofilter";
 
-export default function List({
-  todos,
-  setTodos,
-  handleRemove,
-  listNum,
-  setActive,
-  setAll,
-  setComplete,
-  currentlyActive,
-  clearCompleted,
-}) {
-  const completeTodo = (id, complete) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            complete: !complete,
-          };
-        }
-        return todo;
-      })
-    );
-    console.log(todos.length);
+export default function List() {
+  const [todos, setTodos] = useState([]);
+
+  const getAllTodos = async () => {
+    try {
+      const data = await fetch("http://localhost:5000/todos", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      const response = await data.json();
+      setTodos(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllTodos();
+  }, []);
+
+  const handleComplete = async (id, complete) => {
+    try {
+      complete = !complete;
+      await fetch(`http://localhost:5000/todos/${id}/${complete}`, {
+        method: "PUT",
+      });
+
+      window.location = "/";
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const clearCompleted = async () => {
+    try {
+      await fetch("http://localhost:5000/todos/delete", {
+        method: "DELETE",
+      });
+
+      window.location = "/";
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteAllTodos = async () => {
+    try {
+      await fetch("http://localhost:5000/todos", {
+        method: "DELETE",
+      });
+      window.location = "/";
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteTodo = async (id) => {
+    try {
+      await fetch(`http://localhost:5000/todos/${id}`, {
+        method: "DELETE",
+      });
+      window.location = "/";
+      console.log(id);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div style={{ paddingBottom: "2.5rem" }} className="list-container">
-      {/* <DragDropContext> */}
-      {/* <Droppable droppableId="todoList"> */}
-      {/* {(provided) => { */}
-      {todos.map(({ text, id, complete }, index) => (
-        // <Draggable key={id} draggableId={id} index={index}>
-        <div
-          className="list"
-          // {...provided.droppableProps}
-          // ref={provided.innerRef}
-          key={id}
-        >
+      {todos.map((todo) => (
+        <div className="list" key={todo.id}>
           <div
-            className={complete ? "checkbox checkbox-complete" : "checkbox"}
+            className={
+              todo.complete ? "checkbox checkbox-complete" : "checkbox"
+            }
             onClick={() => {
-              completeTodo(id, complete);
+              handleComplete(todo.id, todo.complete);
             }}
           />
           <div
-            className={complete ? "complete list-text" : "list-text"}
+            className={todo.complete ? "complete list-text" : "list-text"}
             onClick={() => {
-              completeTodo(id, complete);
+              handleComplete(todo.id, todo.complete);
             }}
           >
-            {text}
+            {todo.description}
           </div>
-          <img
-            src={cross}
-            alt=""
-            className="remove"
-            onClick={() => handleRemove(id)}
-          />
+          <div>
+            <img
+              src={cross}
+              alt="remove todo"
+              className="remove"
+              onClick={() => deleteTodo(todo.id)}
+            />
+          </div>
         </div>
-        // </Draggable>
-        //
-        // }
       ))}
-      {/* </Droppable>
-      </DragDropContext> */}
       <div className="bottom-nav">
         <div className="left">
-          <p className="items-left">{listNum} Items Left</p>
+          <p className="items-left">{todos.length} Items Left</p>
         </div>
-        <TodoFilter
-          setAll={setAll}
-          currentlyActive={currentlyActive}
-          setActive={setActive}
-          setComplete={setComplete}
-        />
+        <TodoFilter getAllTodos={getAllTodos} setTodos={setTodos} />
         <div className="right">
           <button className="clear-list" onClick={() => clearCompleted()}>
             Clear Completed
           </button>
         </div>
       </div>
-      <button onClick={() => setTodos([])} className="clear-all">
+      <button onClick={() => deleteAllTodos()} className="clear-all">
         Clear all
       </button>
     </div>

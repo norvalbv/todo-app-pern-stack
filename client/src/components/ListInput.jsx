@@ -1,26 +1,20 @@
 import { useState } from "react";
 import "./listinput.scss";
 
-export default function ListItem({ onSubmit }) {
+export default function ListItem() {
   const [input, setInput] = useState("");
-
-  const handleChange = (e) => {
-    setInput(e.target.value);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const body = { input };
-      const response = await fetch("http://localhost:5000/todos", {
+      await fetch("http://localhost:5000/todos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
 
       window.location = "/";
-
-      console.log(response);
     } catch (error) {
       console.error(error.message);
     }
@@ -33,7 +27,7 @@ export default function ListItem({ onSubmit }) {
         <input
           placeholder="Create a new todo..."
           value={input}
-          onChange={handleChange}
+          onChange={(e) => setInput(e.target.value)}
           name="text"
           className="todo-input"
         />

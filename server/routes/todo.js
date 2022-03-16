@@ -3,11 +3,11 @@ const pool = require("../db/db");
 // create a todo
 
 const createTodo = async (req, res) => {
-  const { description } = req.body;
+  const { input } = req.body;
   try {
     const newTodo = await pool.query(
-      "INSERT INTO todo (description) VALUES ($1) RETURNING *",
-      [description]
+      "INSERT INTO todo (description, complete) VALUES ($1, $2) RETURNING *",
+      [input, false]
     );
 
     res.json(newTodo.rows[0]);
@@ -41,16 +41,26 @@ const getTodo = async (req, res) => {
   }
 };
 
+// clear complete
+
+const clearComplete = async () => {
+  try {
+    await pool.query("DELETE FROM todo WHERE complete = true");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // update a todo
 
 const updateTodo = async (req, res) => {
   try {
     const { id } = req.params;
     const { description } = req.body;
-    const updateTodo = await pool.query(
-      "UPDATE todo SET description = $1 WHERE id = $2",
-      [description, id]
-    );
+    await pool.query("UPDATE todo SET description = $1 WHERE id = $2", [
+      description,
+      id,
+    ]);
     res.json("todo was updated");
   } catch (error) {
     console.error(error);
@@ -61,13 +71,23 @@ const updateTodo = async (req, res) => {
 
 const completeTodo = async (req, res) => {
   try {
-    const { id } = req.params;
-    let completed;
+    const { complete, id } = req.params;
     const updateComplete = await pool.query(
-      "UPDATE TABLE todo SET complete = $1 WHERE id = $2",
-      [completed, id]
+      "UPDATE todo SET complete = $1 WHERE id = $2",
+      [complete, id]
     );
-    res.json(complete, id);
+    res.json("todo complete boolean was updated");
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// delete all todos
+
+const deleteAllTodos = async (req, res) => {
+  try {
+    await pool.query("DELETE FROM todo");
+    res.json("All todos were deleted.");
   } catch (error) {
     console.error(error);
   }
@@ -78,7 +98,7 @@ const completeTodo = async (req, res) => {
 const deleteTodo = async (req, res) => {
   try {
     const { id } = req.params;
-    const deleteTodo = await pool.query("DELETE FROM todo WHERE id = $1", [id]);
+    await pool.query("DELETE FROM todo WHERE id = $1", [id]);
     res.json("Todo was deleted");
   } catch (error) {
     console.error(error);
@@ -89,7 +109,9 @@ module.exports = {
   createTodo,
   getAllTodos,
   getTodo,
+  clearComplete,
   updateTodo,
   completeTodo,
+  deleteAllTodos,
   deleteTodo,
 };

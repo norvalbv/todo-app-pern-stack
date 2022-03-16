@@ -1,36 +1,50 @@
-export default function TodoFilter({ setAll, currentlyActive, setActive, setComplete }) {
+import { useState } from "react";
+
+export default function TodoFilter({ getAllTodos, setTodos }) {
+  const [status, setStatus] = useState("all");
+  const displayComplete = async () => {
+    const data = await fetch("http://localhost:5000/todos", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const response = await data.json();
+    const filter = response.filter((item) => item.complete);
+    setTodos(filter);
+    setStatus("complete");
+  };
+
+  const displayActive = async () => {
+    const data = await fetch("http://localhost:5000/todos", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const response = await data.json();
+    const filter = response.filter((item) => !item.complete);
+    console.log(filter);
+    setTodos(filter);
+    setStatus("active");
+  };
   return (
     <div className="todo-filter">
       <button
         onClick={() => {
-          setAll();
-          console.log(currentlyActive);
+          getAllTodos();
+          setStatus("all");
+          console.log("all todos requested");
         }}
-        className={
-          currentlyActive === "currentlyAll"
-            ? "currentlyAll sorting"
-            : "sorting"
-        }
+        className={status === "all" ? "currentlyAll sorting" : "sorting"}
       >
         All
       </button>
       <button
-        className={
-          currentlyActive === "currentlyActive"
-            ? "currentlyAll sorting"
-            : "sorting"
-        }
-        onClick={() => setActive()}
+        className={status === "active" ? "currentlyAll sorting" : "sorting"}
+        onClick={() => displayActive()}
       >
         Active
       </button>
       <button
-        className={
-          currentlyActive === "currentlyComplete"
-            ? "currentlyAll sorting"
-            : "sorting"
-        }
-        onClick={() => setComplete()}
+        className={status === "complete" ? "currentlyAll sorting" : "sorting"}
+        onClick={() => displayComplete()}
       >
         Completed
       </button>

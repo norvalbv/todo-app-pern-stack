@@ -5,10 +5,12 @@ const cors = require("cors");
 
 const port = process.env.PORT || 5000;
 
-// middlewear
+// Middlewear
 
 app.use(cors());
 app.use(express.json());
+
+// Routes
 
 app.post("/todos", routes.createTodo);
 
@@ -18,7 +20,11 @@ app.get("/todos/:id", routes.getTodo);
 
 app.put("/todos/:id/description", routes.updateTodo);
 
-app.get("/todos/:id/complete", routes.completeTodo);
+app.put("/todos/:id/:complete", routes.completeTodo);
+
+app.delete("/todos/delete", routes.clearComplete);
+
+app.delete("/todos", routes.deleteAllTodos);
 
 app.delete("/todos/:id", routes.deleteTodo);
 
