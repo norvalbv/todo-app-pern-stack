@@ -61,11 +61,12 @@ const updateTodo = async (req, res) => {
 
 const completeTodo = async (req, res) => {
   try {
-    const { id, complete } = req.params;
+    const { id } = req.params;
     let completed;
-    console.log(id);
-
-    const updateComplete = await pool.query("UP", [id]);
+    const updateComplete = await pool.query(
+      "UPDATE TABLE todo SET complete = $1 WHERE id = $2",
+      [completed, id]
+    );
     res.json(complete, id);
   } catch (error) {
     console.error(error);
