@@ -10,7 +10,7 @@ const devConfig = {
 };
 
 const proConfig = {
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.HEROKU_POSTGRESQL_PURPLE_URL,
 };
 
 const pool = new Pool({

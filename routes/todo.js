@@ -21,7 +21,7 @@ const createTodo = async (req, res) => {
 const getAllTodos = async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
-    res.json(allTodos.rows);
+    // res.json(allTodos.rows);
   } catch (error) {
     console.error(error);
   }
