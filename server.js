@@ -34,9 +34,9 @@ app.delete("/todos", routes.deleteAllTodos);
 
 app.delete("/todos/:id", routes.deleteTodo);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "client/build/index.html"));
+// });
 
 app.listen(port, function () {
   console.log(`Listening on port ${port}`);
