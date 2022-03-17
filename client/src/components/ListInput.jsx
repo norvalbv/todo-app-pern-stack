@@ -4,11 +4,13 @@ import "./listinput.scss";
 export default function ListItem() {
   const [input, setInput] = useState("");
 
+  const baseURL = 'connect-2-dublin.heroku.com/api/v3';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const body = { input };
-      await fetch("http://localhost:5000/todos", {
+      await fetch(`http://${baseURL}/todos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

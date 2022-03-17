@@ -2,8 +2,11 @@ import { useState } from "react";
 
 export default function TodoFilter({ getAllTodos, setTodos }) {
   const [status, setStatus] = useState("all");
+
+  const baseURL = "connect-2-dublin.heroku.com/api/v3";
+
   const displayComplete = async () => {
-    const data = await fetch("http://localhost:5000/todos", {
+    const data = await fetch(`http://${baseURL}/todos`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -14,7 +17,7 @@ export default function TodoFilter({ getAllTodos, setTodos }) {
   };
 
   const displayActive = async () => {
-    const data = await fetch("http://localhost:5000/todos", {
+    const data = await fetch(`http://${baseURL}/todos`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -24,6 +27,7 @@ export default function TodoFilter({ getAllTodos, setTodos }) {
     setTodos(filter);
     setStatus("active");
   };
+  
   return (
     <div className="todo-filter">
       <button
