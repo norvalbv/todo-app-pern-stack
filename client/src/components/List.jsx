@@ -6,11 +6,9 @@ import TodoFilter from "./todofilter";
 export default function List() {
   const [todos, setTodos] = useState([]);
 
-  const baseURL = 'connect-2-dublin.heroku.com/api/v3';
-
   const getAllTodos = async () => {
     try {
-      const data = await fetch(`http://${baseURL}/todos`, {
+      const data = await fetch(`/todos`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -28,7 +26,7 @@ export default function List() {
   const handleComplete = async (id, complete) => {
     try {
       complete = !complete;
-      await fetch(`http://${baseURL}/todos/${id}/${complete}`, {
+      await fetch(`/todos/${id}/${complete}`, {
         method: "PUT",
       });
 
@@ -40,7 +38,7 @@ export default function List() {
 
   const clearCompleted = async () => {
     try {
-      await fetch(`http://${baseURL}/todos/delete`, {
+      await fetch(`/todos/delete`, {
         method: "DELETE",
       });
 
@@ -52,7 +50,7 @@ export default function List() {
 
   const deleteAllTodos = async () => {
     try {
-      await fetch(`http://${baseURL}/todos`, {
+      await fetch(`/todos`, {
         method: "DELETE",
       });
       window.location = "/";
@@ -63,7 +61,7 @@ export default function List() {
 
   const deleteTodo = async (id) => {
     try {
-      await fetch(`http://${baseURL}/todos/${id}`, {
+      await fetch(`/todos/${id}`, {
         method: "DELETE",
       });
       window.location = "/";
