@@ -20,8 +20,9 @@ const createTodo = async (req, res) => {
 
 const getAllTodos = async (req, res) => {
   try {
-    const allTodos = await pool.query("SELECT * FROM todo");
-    // res.json(allTodos.rows);
+    const allTodos = await pool.query('SELECT * FROM todo');
+    res.send(allTodos.rows);
+    // res.send(allTodos)
   } catch (error) {
     console.error(error);
   }

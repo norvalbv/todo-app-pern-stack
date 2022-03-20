@@ -9,13 +9,14 @@ const devConfig = {
   database: process.env.pg_database,
 };
 
-const proConfig = {
-  connectionString: process.env.HEROKU_POSTGRESQL_PURPLE_URL,
-};
+// const proConfig = {
+//   connectionString: process.env.HEROKU_POSTGRESQL_PURPLE_URL,
+// };
 
-const pool = new Pool({
-  connectionString:
-    process.env.NODE_ENV === "production" ? proConfig : devConfig,
-});
+// const pool = new Pool(
+//   process.env.NODE_ENV === "production" ? proConfig : devConfig
+// );
+
+const pool = new Pool(devConfig);
 
 module.exports = pool;
