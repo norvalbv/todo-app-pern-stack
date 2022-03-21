@@ -1,5 +1,5 @@
-require("dotenv").config();
 const Pool = require("pg").Pool;
+require("dotenv").config();
 
 const devConfig = {
   user: process.env.pg_user,
@@ -13,10 +13,8 @@ const proConfig = {
   connectionString: process.env.HEROKU_POSTGRESQL_PURPLE_URL,
 };
 
-// const pool = new Pool(
-//   process.env.NODE_ENV === "production" ? proConfig : devConfig
-// );
-
-const pool = new Pool(proConfig);
+const pool = new Pool(
+  process.env.NODE_ENV === "production" ? proConfig : devConfig
+);
 
 module.exports = pool;
