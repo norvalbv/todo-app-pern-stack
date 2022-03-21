@@ -8,10 +8,7 @@ export default function List() {
 
   const getAllTodos = async () => {
     try {
-      const data = await fetch(`/todos`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
+      const data = await fetch(`/todos`);
       const response = await data.json();
       setTodos(response);
     } catch (error) {
