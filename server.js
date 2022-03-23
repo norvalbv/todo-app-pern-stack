@@ -21,14 +21,11 @@ if (process.env.NODE_ENV === "production") {
 
 app.get("/db", async (req, res) => {
   try {
-    const client = await pool.connect();
-    const result = await client.query("SELECT * FROM test_table");
+    const result = await pool.query("SELECT * FROM todo");
     const results = { results: result ? result.rows : null };
-    res.render("pages/db", results);
-    client.release();
+    res.send(results);
   } catch (err) {
     console.error(err);
-    res.send("Error " + err);
   }
 });
 
