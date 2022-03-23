@@ -8,8 +8,6 @@ export default function List() {
 
   // const baseURL = "connect-2-dublin.heroku.com/api/v3";
 
-  // const base_url = process.env.DATABASE_URL;
-
   const getAllTodos = async () => {
     try {
       const data = await fetch(`/todos`);

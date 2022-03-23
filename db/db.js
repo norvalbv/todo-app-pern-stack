@@ -11,6 +11,7 @@ const devConfig = {
 
 const proConfig = {
   connectionString: process.env.HEROKU_POSTGRESQL_PURPLE_URL,
+  ssl: { rejectUnauthorized: false },
 };
 
 const pool = new Pool(
