@@ -5,6 +5,8 @@ export default function TodoFilter({ getAllTodos, setTodos }) {
 
   // const baseURL = "connect-2-dublin.heroku.com/api/v3";
 
+  // const base_url = process.env.DATABASE_URL
+
   const displayComplete = async () => {
     const data = await fetch(`/todos`, {
       method: "GET",

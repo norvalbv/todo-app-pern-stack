@@ -4,7 +4,9 @@ import "./listinput.scss";
 export default function ListItem() {
   const [input, setInput] = useState("");
 
-  // const baseURL = 'connect-2-dublin.heroku.com/api/v3';
+  // const base_url = 'connect-2-dublin.heroku.com/api/v3';
+
+  // const base_url = process.env.DATABASE_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
