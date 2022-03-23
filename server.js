@@ -4,6 +4,7 @@ const routes = require("./routes/todo");
 const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
+const pool = require("./db/db");
 
 const port = process.env.PORT || 5000;
 
