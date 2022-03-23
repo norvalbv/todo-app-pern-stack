@@ -28,7 +28,7 @@ pool.query(
       console.log(JSON.stringify(row));
     }
 
-    pool.end();
+    // pool.end();
   }
 );
 
